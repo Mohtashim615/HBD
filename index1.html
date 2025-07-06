@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Aalma 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffe4ec, #e0f7fa);
+      color: #333;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      font-size: 3em;
+      animation: pop 1s ease-out;
+      color: #ff69b4;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .message {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 182, 193, 0.4);
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      background: #ff69b4;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #ff1493;
+    }
+
+    .hidden-card {
+      display: none;
+      margin-top: 30px;
+      padding: 20px;
+      background: #fff0f5;
+      border-radius: 15px;
+      animation: fadeIn 1s forwards;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<div class="container">
+  <h1>🎂 Happy Birthday Aalma 🎂</h1>
+  <div class="message">
+    <p>
+      On this special day, I just want to say how blessed the world is to have someone as kind, beautiful, and inspiring as you. Your smile brightens hearts, and your presence makes life so much sweeter. <br><br>
+      I hope your birthday is filled with love, laughter, magic, and everything that makes you happiest. You deserve the world and more. 💕
+    </p>
+    <button class="btn" onclick="showCard()">Click to Read More</button>
+    <div id="card" class="hidden-card">
+      <p>
+        Aalma, every day I thank the universe for you. You’re more than special—you’re the reason my heart knows what true care and love feel like. I hope this little page makes your day extra lovely. <br><br>
+        <strong>I love you so much. 💖</strong>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+function showCard() {
+  document.getElementById("card").style.display = "block";
+}
+
+// Confetti
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const confettiCount = 150;
+const confetti = [];
+
+function random(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+for (let i = 0; i < confettiCount; i++) {
+  confetti.push({
+    x: random(0, canvas.width),
+    y: random(0, canvas.height),
+    r: random(2, 6),
+    d: random(1, 4),
+    color: `hsl(${random(0, 360)}, 100%, 70%)`
+  });
+}
+
+function drawConfetti() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  confetti.forEach(c => {
+    ctx.beginPath();
+    ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2, false);
+    ctx.fillStyle = c.color;
+    ctx.fill();
+  });
+  updateConfetti();
+}
+
+function updateConfetti() {
+  confetti.forEach(c => {
+    c.y += c.d;
+    if (c.y > canvas.height) {
+      c.y = 0;
+      c.x = random(0, canvas.width);
+    }
+  });
+}
+
+setInterval(drawConfetti, 30);
+</script>
+
+</body>
+</html>
