@@ -30,51 +30,24 @@
     }
 
     .message {
-  font-size: 1.2em;
-  max-width: 600px;
-  max-height: 250px; /* 👈 Limits height */
-  overflow-y: auto;   /* 👈 Enables vertical scroll */
-  margin: 30px auto;
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(255, 182, 193, 0.4);
-  animation: fadeIn 2s ease-in;
-}
+      font-size: 1.2em;
+      max-width: 600px;
+      max-height: 250px;
+      overflow-y: auto;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 182, 193, 0.4);
+      animation: fadeIn 2s ease-in;
+    }
 
-/* Optional: beautiful scroll bar for message box */
-.message::-webkit-scrollbar {
-  width: 8px;
-}
-.message::-webkit-scrollbar-thumb {
-  background: #ffb6c1;
-  border-radius: 10px;
-}
-
-.hidden-card {
-  display: none;
-  max-height: 200px;  /* 👈 Limits height */
-  overflow-y: auto;   /* 👈 Enables vertical scroll */
-  margin-top: 30px;
-  padding: 20px;
-  background: #fff0f5;
-  border-radius: 15px;
-  animation: fadeIn 1s forwards;
-}
-
-/* Optional: scroll styling for hidden cards */
-.hidden-card::-webkit-scrollbar {
-  width: 8px;
-}
-.hidden-card::-webkit-scrollbar-thumb {
-  background: #f8a5c2;
-  border-radius: 10px;
-}
-
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .message::-webkit-scrollbar {
+      width: 8px;
+    }
+    .message::-webkit-scrollbar-thumb {
+      background: #ffb6c1;
+      border-radius: 10px;
     }
 
     .btn {
@@ -93,48 +66,29 @@
       background: #ff1493;
     }
 
-    .message {
-  font-size: 1.2em;
-  max-width: 600px;
-  max-height: 250px; /* 👈 Limits height */
-  overflow-y: auto;   /* 👈 Enables vertical scroll */
-  margin: 30px auto;
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(255, 182, 193, 0.4);
-  animation: fadeIn 2s ease-in;
-}
+    .hidden-card {
+      display: none;
+      max-height: 200px;
+      overflow-y: auto;
+      margin-top: 30px;
+      padding: 20px;
+      background: #fff0f5;
+      border-radius: 15px;
+      animation: fadeIn 1s forwards;
+    }
 
-/* Optional: beautiful scroll bar for message box */
-.message::-webkit-scrollbar {
-  width: 8px;
-}
-.message::-webkit-scrollbar-thumb {
-  background: #ffb6c1;
-  border-radius: 10px;
-}
+    .hidden-card::-webkit-scrollbar {
+      width: 8px;
+    }
+    .hidden-card::-webkit-scrollbar-thumb {
+      background: #f8a5c2;
+      border-radius: 10px;
+    }
 
-.hidden-card {
-  display: none;
-  max-height: 200px;  /* 👈 Limits height */
-  overflow-y: auto;   /* 👈 Enables vertical scroll */
-  margin-top: 30px;
-  padding: 20px;
-  background: #fff0f5;
-  border-radius: 15px;
-  animation: fadeIn 1s forwards;
-}
-
-/* Optional: scroll styling for hidden cards */
-.hidden-card::-webkit-scrollbar {
-  width: 8px;
-}
-.hidden-card::-webkit-scrollbar-thumb {
-  background: #f8a5c2;
-  border-radius: 10px;
-}
-
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     canvas {
       position: fixed;
@@ -156,28 +110,33 @@
       On this special day, I just want to say how blessed the world is to have someone as kind, beautiful, and inspiring as you. Your smile brightens hearts, and your presence makes life so much sweeter. <br><br>
       I hope your birthday is filled with love, laughter, magic, and everything that makes you happiest. You deserve the world and more. 💕
     </p>
-    <button class="btn" onclick="showCard()">Click to Read More</button>
-    <div id="card" class="hidden-card">
+
+    <button class="btn" onclick="showCard1()">Click to Read More</button>
+    <div id="card1" class="hidden-card">
       <p>
-        You’re not just special — you made me understand what real love and care feel like. Thank you for coming into my life and staying. On your birthday, I just want you to know how much you’re loved. Every laugh and moment we’ve shared brings me peace. You taught me that love can be quiet and patient too. I hope this year brings you lots of happiness and helps you become the dermatologist you dream of. I’ll always be here, loving and supporting you — even from a distance. Happy Birthday! <br><br>
+        You’re not just special — you made me understand what real love and care feel like. Thank you for coming into my life and staying. On your birthday, I just want you to know how much you’re loved. Every laugh and moment we’ve shared brings me peace. You taught me that love can be quiet and patient too. I hope this year brings you lots of happiness and helps you become the dermatologist you dream of. I’ll always be here, loving and supporting you — even from a distance. Happy Birthday!
       </p>
     </div>
-    <button class="btn" onclick="showCard()">A little wish</button>
-    <div id="card" class="hidden-card">
+
+    <button class="btn" onclick="showCard2()">A little wish</button>
+    <div id="card2" class="hidden-card">
       <p>
-        If we walk this journey of life together, I promise to always stand by your side, to support you, to cherish you and to love you with all my heart.
+        If we walk this journey of life together, I promise to always stand by your side, to support you, to cherish you and to love you with all my heart. <br><br>
         <strong>I love you so much. 💖</strong>
       </p>
-      </div>
+    </div>
   </div>
 </div>
 
 <script>
-function showCard() {
-  document.getElementById("card").style.display = "block";
+function showCard1() {
+  document.getElementById("card1").style.display = "block";
+}
+function showCard2() {
+  document.getElementById("card2").style.display = "block";
 }
 
-// Confetti
+// Confetti Animation
 const canvas = document.getElementById("confetti");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
@@ -226,3 +185,4 @@ setInterval(drawConfetti, 30);
 
 </body>
 </html>
+
