@@ -3,207 +3,175 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday Aalma 🎉</title>
+  <title>Birthday Surprise</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #ffe4ec, #e0f7fa);
-      color: #333;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       overflow: hidden;
+      position: relative;
     }
 
-    .container {
-      text-align: center;
-      padding: 50px 20px;
-    }
-
-    h1 {
-      font-size: 3em;
-      animation: pop 1s ease-out;
-      color: #ff69b4;
-    }
-
-    @keyframes pop {
-      0% { transform: scale(0); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+    button {
+      padding: 12px 25px;
+      font-size: 1.2em;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      z-index: 10;
     }
 
     .message {
-      font-size: 1.2em;
-      max-width: 600px;
-      max-height: 250px;
-      overflow-y: auto;
-      margin: 30px auto;
-      background: white;
+      font-size: 1.5em;
+      text-align: center;
+      max-width: 700px;
       padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255, 182, 193, 0.4);
-      animation: fadeIn 2s ease-in;
-    }
-
-    .message::-webkit-scrollbar {
-      width: 8px;
-    }
-    .message::-webkit-scrollbar-thumb {
-      background: #ffb6c1;
-      border-radius: 10px;
-    }
-
-    .btn {
-      background: #ff69b4;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      font-size: 1em;
-      border-radius: 25px;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: background 0.3s;
-    }
-
-    .btn:hover {
-      background: #ff1493;
-    }
-
-    .hidden-card {
+      background: #ffffffdd;
+      border-radius: 20px;
       display: none;
-      height: 200px;
-      overflow-y: auto;
-      margin-top: 30px;
-      padding: 20px;
-      background: #fff0f5;
-      border-radius: 15px;
-      animation: fadeIn 1s forwards;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      z-index: 10;
     }
 
-    .hidden-card::-webkit-scrollbar {
-      width: 8px;
+    #countdown {
+      font-size: 4em;
+      color: #ff1493;
+      display: none;
     }
 
-    .hidden-card::-webkit-scrollbar-thumb {
-      background: #f8a5c2;
-      border-radius: 10px;
+    #finalMsg {
+      font-size: 3em;
+      color: #e91e63;
+      display: none;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .balloon {
+      width: 30px;
+      height: 40px;
+      background: pink;
+      border-radius: 50%;
+      position: absolute;
+      animation: float 6s infinite;
     }
 
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 0;
+    @keyframes float {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    .heart {
+      width: 20px;
+      height: 20px;
+      background: red;
+      position: absolute;
+      top: 100%;
+      animation: floatHeart 5s infinite;
+      clip-path: polygon(50% 0%, 100% 35%, 82% 100%, 50% 80%, 18% 100%, 0 35%);
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-120vh); opacity: 0; }
     }
   </style>
 </head>
 <body>
 
-<canvas id="confetti"></canvas>
+<!-- Step Buttons & Messages -->
+<button id="startBtn">Tap for Surprise</button>
+<div class="message" id="roastMsg">Chal va tera liya surprise bnao ga itna wela hu... Boni Bujo 😏</div>
+<button id="exitBtn" style="display:none; position:absolute; bottom: 20px; right: 20px;">Click to Exit</button>
+<div class="message" id="sorryMsg">Sorry yar tu to bura man gye 😔</div>
+<button id="realBtn" style="display:none;">This time for real</button>
 
-<div class="container">
-  <h1>🎂 Happy Birthday Aalma 🎂</h1>
-  <div class="message">
-    <p>
-      On this special day, I just want to say how blessed the world is to have someone as kind, beautiful, and inspiring as you. Your smile brightens hearts, and your presence makes life so much sweeter. <br><br>
-      I hope your birthday is filled with love, laughter, magic, and everything that makes you happiest. You deserve the world and more. 💕
-    </p>
+<div id="countdown"></div>
+<div id="finalMsg">🎉 Happy Birthday Maryam 🎉</div>
 
-    <button class="btn" onclick="showCard1()">Click to Read More</button>
-    <div id="card1" class="hidden-card">
-      <p>
-        You’re not just special — you made me understand what real love and care feel like. Thank you for coming into my life and staying. On your birthday, I just want you to know how much you’re loved. Every laugh and moment we’ve shared brings me peace. You taught me that love can be quiet and patient too. I hope this year brings you lots of happiness and helps you become the dermatologist you dream of. I’ll always be here, loving and supporting you — even from a distance. Happy Birthday!<br><br>
-        This is your moment to shine, to feel celebrated, and to know that you’re loved beyond words. I’ll keep cheering for you always!<br><br>
-        Scroll line 1 ❤️<br>
-        Scroll line 2 💕<br>
-        Scroll line 3 💖<br>
-        Scroll line 4 🌸<br>
-        Scroll line 5 🌟<br>
-        Scroll line 6 ✨<br>
-        Scroll line 7 🎀<br>
-        Scroll line 8 💐<br>
-        Scroll line 9 🎉<br>
-        Scroll line 10 🎂
-      </p>
-    </div>
-
-    <button class="btn" onclick="showCard2()">A little wish</button>
-    <div id="card2" class="hidden-card">
-      <p>
-        If we walk this journey of life together, I promise to always stand by your side, to support you, to cherish you and to love you with all my heart. <br><br>
-        Your laugh is my favorite song, your presence is my favorite place. May your year ahead be filled with the same joy you bring to everyone around you.<br><br>
-        Scroll line 1 ❤️<br>
-        Scroll line 2 💕<br>
-        Scroll line 3 💖<br>
-        Scroll line 4 🌸<br>
-        Scroll line 5 🌟<br>
-        Scroll line 6 ✨<br>
-        Scroll line 7 🎀<br>
-        Scroll line 8 💐<br>
-        Scroll line 9 🎉<br>
-        Scroll line 10 🎂<br><br>
-        <strong>I love you so much. 💖</strong>
-      </p>
-    </div>
-  </div>
+<div class="message" id="wishText">
+  On this special day, I just want to say how truly blessed I am by Allah (SWT) to have someone as kind and sweet as you in my life.  
+  I pray that Allah continues to guide you, protect you, and fill your life with endless blessings.  
+  May your new year bring you closer to your dreams and closer to Him.  
+  May He remove your worries, heal your heart, and grant you happiness in both worlds.  
+  You deserve every goodness this dunya can offer and more. 💖
 </div>
 
+<!-- Scripts -->
 <script>
-function showCard1() {
-  document.getElementById("card1").style.display = "block";
-}
-function showCard2() {
-  document.getElementById("card2").style.display = "block";
-}
+  const startBtn = document.getElementById("startBtn");
+  const roastMsg = document.getElementById("roastMsg");
+  const exitBtn = document.getElementById("exitBtn");
+  const sorryMsg = document.getElementById("sorryMsg");
+  const realBtn = document.getElementById("realBtn");
+  const countdown = document.getElementById("countdown");
+  const finalMsg = document.getElementById("finalMsg");
+  const wishText = document.getElementById("wishText");
 
-// Confetti Animation
-const canvas = document.getElementById("confetti");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+  startBtn.onclick = () => {
+    startBtn.style.display = "none";
+    roastMsg.style.display = "block";
+    exitBtn.style.display = "block";
+  };
 
-const confettiCount = 150;
-const confetti = [];
+  exitBtn.onclick = () => {
+    roastMsg.style.display = "none";
+    exitBtn.style.display = "none";
+    sorryMsg.style.display = "block";
+    realBtn.style.display = "block";
+  };
 
-function random(min, max) {
-  return Math.random() * (max - min) + min;
-}
+  realBtn.onclick = () => {
+    sorryMsg.style.display = "none";
+    realBtn.style.display = "none";
+    countdown.style.display = "block";
 
-for (let i = 0; i < confettiCount; i++) {
-  confetti.push({
-    x: random(0, canvas.width),
-    y: random(0, canvas.height),
-    r: random(2, 6),
-    d: random(1, 4),
-    color: `hsl(${random(0, 360)}, 100%, 70%)`
-  });
-}
+    let count = 1;
+    const interval = setInterval(() => {
+      countdown.textContent = count;
+      count++;
+      if (count > 10) {
+        clearInterval(interval);
+        countdown.style.display = "none";
+        finalMsg.style.display = "block";
+        createBalloons();
+        createHearts();
+        setTimeout(() => {
+          wishText.style.display = "block";
+        }, 4000);
+      }
+    }, 500);
+  };
 
-function drawConfetti() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  confetti.forEach(c => {
-    ctx.beginPath();
-    ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2, false);
-    ctx.fillStyle = c.color;
-    ctx.fill();
-  });
-  updateConfetti();
-}
-
-function updateConfetti() {
-  confetti.forEach(c => {
-    c.y += c.d;
-    if (c.y > canvas.height) {
-      c.y = 0;
-      c.x = random(0, canvas.width);
+  function createBalloons() {
+    for (let i = 0; i < 20; i++) {
+      let balloon = document.createElement("div");
+      balloon.classList.add("balloon");
+      balloon.style.left = Math.random() * 100 + "vw";
+      balloon.style.background = `hsl(${Math.random() * 360}, 70%, 80%)`;
+      balloon.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(balloon);
+      setTimeout(() => balloon.remove(), 6000);
     }
-  });
-}
+  }
 
-setInterval(drawConfetti, 30);
+  function createHearts() {
+    for (let i = 0; i < 20; i++) {
+      let heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+  }
 </script>
 
 </body>
